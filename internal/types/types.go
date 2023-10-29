@@ -10,9 +10,17 @@ type Response struct {
 }
 
 type CreateRequest struct {
-	Name string `json:"name"`
+	Name string `path:"name"`
 }
 
 type CreateResponse struct {
 	Id string `json:"id"`
+}
+
+type MigrateReq struct {
+	Param string `path:"param"`
+}
+
+type MigrateResp struct {
+	Status string `json:"status"`
 }

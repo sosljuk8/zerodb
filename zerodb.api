@@ -8,11 +8,19 @@ type (
 	}
 
 	CreateRequest {
-		Name string `json:"name"`
+		Name string `path:"name"`
 	}
 
 	CreateResponse {
 		Id string `json:"id"`
+	}
+
+	MigrateReq {
+		Param string `path:"param"`
+	}
+
+	MigrateResp {
+		Status string `json:"status"`
 	}
 )
 
@@ -23,5 +31,10 @@ service zerodb-api {
 
 service zerodb-api {
 	@handler CreateHandler
-	post /greet/create/:name (Request) returns (Response)
+	post /greet/create/:name (CreateRequest) returns (CreateResponse)
+}
+
+service zerodb-api {
+	@handler MigrateHandler
+	get /db/migrate/:param (MigrateReq) returns (MigrateResp)
 }
