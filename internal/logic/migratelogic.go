@@ -24,7 +24,9 @@ func NewMigrateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *MigrateLo
 }
 
 func (l *MigrateLogic) Migrate(req *types.MigrateReq) (resp *types.MigrateResp, err error) {
-	// todo: add your logic here and delete this line
+
+	//s := l.svcCtx.Client
+
 	client := db.GetConnection()
 	// Run the auto migration tool.
 	if err := client.Schema.Create(context.Background()); err != nil {
